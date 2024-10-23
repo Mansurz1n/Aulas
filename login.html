@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pi-Login</title>
+        <style>
+            head {
+                text-align: center;
+            }
+            body{
+                padding: 0;
+                border: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #555454;
+                color:white;
+                text-align: center;
+            }
+            h1{
+                font-size: 5em;
+                padding: 0;
+                border: 0;
+            }
+            #divLogin{
+                padding: 0%;
+                border: 0;
+                background-color: black;
+                border: 2px solid #ccc;
+                max-width: 50%;
+                
+            }
+            /*
+            h1{
+                font-size: 5em;
+                border: 2px solid red;
+                padding: 0;
+                margin: 0;
+            }
+            form{
+                border: 2px solid yellow;
+            }
+            p{
+                border: 2px solid pink;
+            }*/
+        </style>
+        <script>
+            function exibirDados(){
+            var email = document.getElementById("email").value;
+            var senha = document.getElementById("pwd").value;
+            console.log(email);
+            console.log(senha);
+        }
+        </script>
+    </head>
+    <body>
+        <div id="divLogin">
+            <h1>Login</h1>
+            <p>Informe seus dados para proseguir:</p>
+            <!-- Vamos colocar um formulario de login-->
+            <form id="meu form">
+                <p>
+                    <!--<br>-->
+                    <label for="email">Email:</label>
+                    <input id="email" type="text">
+                </p>
+                <p>
+                    <!--<br>Pula linhas-->
+                    <label for="pwd">Password:</label>
+                    <input type="password"  id="pwd">
+                </p>
+                <button type="button" onclick="exibirDados();">Sign in</button>
+                <!--<button type="reset">Reset</button>-->
+            </form>
+        </div>
+    </body>
+</html>
