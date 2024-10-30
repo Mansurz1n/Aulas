@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Exemplo login</title>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #mesageBox{
+                background-color: rgb(168, 5, 5);
+                border: 3px solid red;
+                color: white;
+                margin-top: 10px ;
+                padding: 0;
+                display: none;
+            }
+            #mesageBox p{
+                margin: 0;
+                padding: 10px;
+            }
+        </style>
+        <script>
+            function showErrorMsg(mesage){
+                var box = document.getElementById("mesageBox");
+                document.getElementById("mesage").innerHTML = mesage
+                if(box.style.display==="none") box.style.display = "block"
+                
+            }
+            function isValid(email,password){
+                if(email && password)return true; 
+                else if(email===undefined && password===undefined) showErrorMsg("Informe todos os campos para fazer login")
+                else if(email === undefined) showErrorMsg("Informe o email")
+                else showErrorMsg("Informe a senha ")
+                return false
+            }
+            async function performLogin(){
+                const loginRoute = "http://localhost:3000/login"
+                var email = document.getElementById("fieldEmail").value;
+                var password = document.getElementById("fieldPassword").value;
+                if(isValid(email,password)){
+                    console.info("Campos validos")
+                    //mando autenticar no backend
+                    const response = await fetch (loginRoute,{method:'POST'});
+                    
+                    if(!response.ok){
+                        showErrorMsg(response.statusText);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Login</h1>
+        <form >
+            <p>
+                <label for = "fieldEmail">Email:</label><br>
+                <input type="text" id="fieldEmail">
+            </p>
+            <p>
+                <label for="fieldPassword">Password:</label><br>
+                <input type="password" id="fieldPassword">
+            </p>
+            <button id="btnLogin" type="button" onclick="performLogin()">Sign in</button>
+            <div id="mesageBox">
+                <p id="mesage">Este é um exemplo de mensagem de erro</p>
+
+            </div>
+        </form>
+    </body>
+</html>
